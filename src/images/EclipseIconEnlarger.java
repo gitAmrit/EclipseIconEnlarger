@@ -41,7 +41,8 @@ public class EclipseIconEnlarger {
 			  
 			  File file = new File(a.getAbsolutePath());
 		      img = ImageIO.read(file);
-		      if (img.getHeight() == 16 && img.getWidth() == 16){
+		      if (img.getHeight() <= 16 && img.getWidth() <= 16){
+		    	  System.out.println(img.getWidth()+"x"+img.getHeight()+ ": " +a.getAbsolutePath());
 		    	  if (img.getType() != 0){
 		    		  img = enlarge(img, this.magnificationFactor);
 		    		  ImageIO.write(img, format, file);
@@ -56,7 +57,7 @@ public class EclipseIconEnlarger {
 	  }
   }
 
-  public static BufferedImage enlarge(BufferedImage image, int n) {
+  public BufferedImage enlarge(BufferedImage image, int n) {
 
     int w = n * image.getWidth();
     int h = n * image.getHeight();
